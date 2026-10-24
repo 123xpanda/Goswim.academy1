@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#07152d" />
+  <meta name="description" content="GoSwim Academy — neuro swimming for kids in Dubai. Trial swimming sessions for children from 3 months in Dubai." />
+  <title>GoSwim Academy — Trial Swimming Sessions in Dubai</title>
+  <style>
+    :root{
+      --bg:#061126; --bg2:#091b38; --panel:rgba(14,35,69,.72);
+      --line:rgba(143,190,255,.19); --text:#f3f7ff; --muted:#a9bad6;
+      --blue:#49baff; --cyan:#72e2ff; --orange:#ff9c54;
+      --max:1160px; --radius:24px;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:88px}
+    body{
+      margin:0; color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      background:
+        radial-gradient(ellipse at 80% 4%,rgba(30,110,225,.23),transparent 35%),
+        radial-gradient(ellipse at 0% 35%,rgba(22,151,206,.11),transparent 32%),
+        linear-gradient(155deg,#050d1e 0%,#07162f 46%,#091c3b 100%);
+      line-height:1.6; overflow-x:hidden;
+    }
+    body:before{content:"";position:fixed;inset:0;pointer-events:none;z-index:-1;opacity:.12;
+      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.25'/%3E%3C/svg%3E");}
+    a{color:inherit;text-decoration:none}
+    button{font:inherit}
+    .wrap{width:min(var(--max),calc(100% - 44px));margin-inline:auto}
+    .nav-shell{position:sticky;top:0;z-index:20;background:rgba(5,14,31,.78);backdrop-filter:blur(18px);border-bottom:1px solid rgba(143,190,255,.14)}
+    nav{height:78px;display:flex;align-items:center;justify-content:space-between;gap:24px}
+    .brand{display:flex;align-items:center;gap:11px;white-space:nowrap}
+    .brand-logo{width:62px;height:62px;object-fit:contain;border-radius:8px;display:block;flex-shrink:0}.brand-name{font-weight:850;letter-spacing:-.045em;font-size:1.3rem;white-space:nowrap}.brand-name em{font-style:normal;color:var(--cyan)}
+    .brand span em{font-style:normal;color:var(--cyan)}
+    .nav-links{display:flex;align-items:center;gap:28px;color:#c1cfe4;font-size:.93rem}
+    .nav-links a{transition:color .2s}.nav-links a:hover{color:white}
+    .nav-actions{display:flex;align-items:center;gap:10px}
+    .lang{border:1px solid var(--line);background:rgba(255,255,255,.04);color:white;padding:9px 13px;border-radius:999px;cursor:pointer}
+    .menu-btn{display:none;border:1px solid var(--line);background:transparent;color:white;border-radius:12px;padding:8px 11px}
+    .btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 21px;border-radius:999px;font-weight:750;border:1px solid transparent;cursor:pointer;transition:transform .2s,box-shadow .2s,background .2s}
+    .btn:hover{transform:translateY(-2px)}
+    .btn-primary{color:#041329;background:linear-gradient(110deg,#78e6ff,#4bbaff 55%,#5591ff);box-shadow:0 10px 35px rgba(43,157,255,.24)}
+    .btn-primary:hover{box-shadow:0 14px 42px rgba(43,157,255,.36)}
+    .btn-ghost{border-color:rgba(126,196,255,.35);background:rgba(255,255,255,.035);color:#edf7ff}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:#82dfff;font-size:.82rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800}
+    .eyebrow:before{content:"";width:22px;height:2px;background:linear-gradient(90deg,var(--cyan),var(--blue));border-radius:2px}
+    .hero{padding:84px 0 78px;position:relative}
+    .hero-grid{display:grid;grid-template-columns:1.04fr .96fr;align-items:center;gap:58px}
+    h1,h2,h3,p{margin-top:0}
+    h1{font-size:clamp(2.8rem,5.4vw,5.35rem);line-height:1.02;letter-spacing:-.065em;margin:20px 0 24px;max-width:760px}
+    h1 .gradient{background:linear-gradient(100deg,#e8f8ff 2%,#71dcff 42%,#438dff 90%);-webkit-background-clip:text;background-clip:text;color:transparent}
+    .hero-copy{font-size:1.13rem;max-width:610px;color:var(--muted);line-height:1.8}
+    .hero-buttons{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+    .trust-row{display:flex;gap:22px;flex-wrap:wrap;margin-top:35px;color:#b7c8e1;font-size:.86rem}
+    .trust-row span{display:flex;align-items:center;gap:8px}.check{color:#7ce7ff}
+    .visual{min-height:440px;position:relative;display:grid;place-items:center}
+    .orb{position:absolute;width:340px;height:340px;border-radius:50%;background:radial-gradient(circle at 34% 25%,rgba(117,231,255,.34),rgba(44,131,246,.12) 44%,rgba(18,46,100,.04) 70%);filter:blur(1px)}
+    .pool-card{position:relative;width:min(100%,440px);aspect-ratio: .92;border-radius:34px;overflow:hidden;border:1px solid rgba(139,209,255,.26);
+      background:linear-gradient(145deg,rgba(23,66,117,.76),rgba(5,18,42,.92));box-shadow:0 30px 100px rgba(0,0,0,.3),inset 0 1px rgba(255,255,255,.12)}
+    .pool-card:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(2,12,35,.04),rgba(2,12,35,.58));z-index:1}.hero-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;opacity:.9}.pool-card .float-ring,.pool-card .bubble,.pool-card .water{display:none}.visual-label{z-index:2}
+    .water{position:absolute;bottom:-10%;left:-15%;width:130%;height:56%;border-radius:46% 52% 0 0;background:linear-gradient(170deg,rgba(58,202,255,.7),rgba(24,109,220,.62) 52%,rgba(9,48,124,.86));transform:rotate(-8deg);box-shadow:0 -18px 70px rgba(54,184,255,.18)}
+    .water:before,.water:after{content:"";position:absolute;inset:8% -5%;border-top:2px solid rgba(202,248,255,.45);border-radius:50%;transform:rotate(4deg)}
+    .water:after{inset:24% -2%;border-color:rgba(202,248,255,.2)}
+    .float-ring{position:absolute;top:18%;left:36%;width:118px;height:118px;border:18px solid #ffad56;border-radius:50%;transform:rotate(-20deg);box-shadow:inset 0 0 0 4px rgba(255,255,255,.2),0 15px 28px #03122a88}
+    .float-ring:after{content:"";position:absolute;top:-17px;left:30px;width:16px;height:20px;background:#ffdb75;border-radius:8px;transform:rotate(22deg)}
+    .bubble{position:absolute;border:1px solid rgba(186,243,255,.55);border-radius:50%;background:rgba(175,236,255,.1);box-shadow:inset -4px -4px 9px #67caff22}
+    .b1{width:24px;height:24px;top:21%;right:18%}.b2{width:13px;height:13px;top:35%;right:27%}.b3{width:34px;height:34px;top:43%;left:16%}
+    .visual-label{position:absolute;left:24px;right:24px;bottom:24px;display:flex;justify-content:space-between;gap:12px;align-items:end}
+    .visual-label strong{font-size:1.13rem}.visual-label small{display:block;color:#c4e4ff}
+    .pill{padding:8px 12px;border-radius:999px;background:rgba(2,15,37,.6);border:1px solid rgba(180,229,255,.22);font-size:.75rem;color:#d7f4ff;white-space:nowrap}
+    .float-note{position:absolute;right:-12px;top:12%;padding:15px 18px;border-radius:18px;border:1px solid var(--line);background:rgba(9,28,57,.88);backdrop-filter:blur(15px);box-shadow:0 18px 50px #0004}
+    .float-note b{display:block;font-size:1.05rem}.float-note span{font-size:.8rem;color:var(--muted)}
+    section{padding:82px 0}
+    .section-head{max-width:690px;margin-bottom:34px}
+    .section-head.center{text-align:center;margin-inline:auto}
+    .section-head.center .eyebrow:before{display:none}
+    h2{font-size:clamp(2rem,3.7vw,3.25rem);line-height:1.1;letter-spacing:-.045em;margin:14px 0 15px}
+    .section-desc{font-size:1.06rem;color:var(--muted);max-width:680px}
+    .grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .card{padding:24px;border-radius:var(--radius);border:1px solid var(--line);background:linear-gradient(145deg,rgba(18,43,80,.75),rgba(7,22,47,.72));box-shadow:inset 0 1px rgba(255,255,255,.035);transition:transform .25s,border-color .25s}
+    .card:hover{transform:translateY(-5px);border-color:rgba(100,204,255,.45)}
+    .icon{width:47px;height:47px;display:grid;place-items:center;border-radius:15px;background:linear-gradient(145deg,rgba(97,222,255,.18),rgba(52,119,255,.12));border:1px solid rgba(119,213,255,.18);font-size:1.4rem;margin-bottom:20px}
+    .card h3{font-size:1.08rem;letter-spacing:-.02em;margin-bottom:8px}.card p{color:var(--muted);font-size:.94rem;margin-bottom:0}
+    .duo{display:grid;grid-template-columns:minmax(280px,.85fr) minmax(0,1.15fr);gap:42px;align-items:center}
+    /* Use the supplied high-resolution Kirill Bobrov poster as a complete image: no crop, no medal overlay. */
+    .duo-visual{min-height:0;border-radius:24px;position:relative;overflow:hidden;border:1px solid rgba(72,183,255,.38);background:#061735;box-shadow:0 24px 70px rgba(0,0,0,.28);line-height:0}
+    .duo-visual:before{display:none}.duo-photo{display:block;position:relative;width:100%;height:auto;object-fit:contain;object-position:center;opacity:1}.duo-symbol,.duo-caption{display:none}
+    .duo-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:25px}
+    .mini-card{padding:19px;border-radius:18px;background:rgba(255,255,255,.035);border:1px solid var(--line)}
+    .mini-card b{display:block;margin-bottom:6px}.mini-card p{font-size:.9rem;color:var(--muted);margin:0}
+    .inception{position:relative;overflow:hidden}
+    .inception-box{display:grid;grid-template-columns:1.1fr .9fr;gap:30px;align-items:center;padding:clamp(28px,5vw,58px);border-radius:32px;border:1px solid rgba(100,200,255,.25);background:radial-gradient(ellipse at 100% 0%,rgba(47,144,255,.22),transparent 44%),linear-gradient(135deg,rgba(17,48,91,.95),rgba(5,18,40,.95));box-shadow:0 28px 90px rgba(0,0,0,.17)}
+    .inception-box p{color:var(--muted);max-width:600px}
+    .steps{display:grid;gap:12px}
+    .step{display:flex;gap:14px;align-items:center;padding:14px 16px;border-radius:16px;background:rgba(255,255,255,.045);border:1px solid rgba(160,207,255,.13)}
+    .step-num{width:32px;height:32px;border-radius:10px;display:grid;place-items:center;background:linear-gradient(145deg,#7ce5ff,#438dff);color:#06152c;font-weight:900;flex-shrink:0}
+    .step span{display:block;color:var(--muted);font-size:.86rem}
+    .locations{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .location{padding:22px;border-radius:20px;background:rgba(11,32,64,.7);border:1px solid var(--line);display:flex;gap:14px;align-items:flex-start}
+    .loc-number{color:#76dfff;font-size:.8rem;font-weight:900;letter-spacing:.1em;padding-top:4px}
+    .location b{display:block;margin-bottom:5px}.location span{color:var(--muted);font-size:.88rem}
+    .contact{padding:76px 0 90px}
+    .contact-box{max-width:940px;margin-inline:auto;text-align:center;padding:clamp(30px,5vw,60px) clamp(20px,5vw,58px);border-radius:32px;border:1px solid rgba(116,207,255,.25);background:radial-gradient(ellipse at 50% 0%,rgba(41,141,255,.24),transparent 60%),linear-gradient(145deg,rgba(16,43,83,.85),rgba(5,17,38,.95));box-shadow:0 28px 90px rgba(0,0,0,.17)}
+    .contact-box .section-desc{margin:0 auto 28px}
+    .booking-form{max-width:760px;margin:32px auto 0;display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:start}
+    .booking-field{display:grid;gap:7px;color:#dceaff;font-size:.9rem;font-weight:700}
+    .booking-field input,.booking-field select,.booking-field textarea{width:100%;min-height:48px;padding:11px 13px;border:1px solid rgba(143,190,255,.25);border-radius:10px;background:#091a35;color:var(--text);font:inherit;color-scheme:dark}
+    .booking-field textarea{min-height:112px;resize:vertical}
+    .booking-field input:focus,.booking-field select:focus,.booking-field textarea:focus{outline:2px solid var(--cyan);outline-offset:2px}
+    .required-mark{color:var(--cyan)}
+    .booking-hint{font-size:.8rem;color:#a9bad6;font-weight:400}
+    .booking-field-wide{grid-column:1/-1}
+    .booking-form .btn{grid-column:1/-1;justify-self:center;margin-top:4px;min-width:200px}
+    .booking-form .btn:disabled{cursor:wait;opacity:.7;transform:none}
+    .booking-note{font-size:.82rem;color:#a9bad6;margin:16px auto 0;max-width:760px}
+    .booking-status{max-width:760px;margin:20px auto 0;padding:14px 16px;border-radius:12px;text-align:start;font-size:.92rem}
+    .booking-status[hidden]{display:none}
+    .booking-status[data-state="success"]{color:#c9ffdf;background:rgba(42,180,105,.12);border:1px solid rgba(93,230,153,.38)}
+    .booking-status[data-state="error"]{color:#ffe0e0;background:rgba(222,72,72,.12);border:1px solid rgba(255,125,125,.38)}
+    .booking-status[data-state="loading"]{color:#d8f4ff;background:rgba(73,186,255,.1);border:1px solid rgba(114,226,255,.3)}
+    .booking-honeypot{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+    body.ar .booking-form,body.ar .booking-status{direction:rtl}
+    footer{border-top:1px solid rgba(143,190,255,.14);padding:24px 0 32px;color:#8298b8;font-size:.86rem}
+    .footer-inner{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
+    .footer-links{display:flex;gap:18px}.footer-links a:hover{color:#d8efff}
+    .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .7s ease}.reveal.visible{opacity:1;transform:none}
+    [data-lang="ru"],[data-lang="ar"]{display:none}
+    body.ru [data-lang="en"],body.ru [data-lang="ar"],body.ar [data-lang="en"],body.ar [data-lang="ru"]{display:none}
+    body.ru [data-lang="ru"],body.ar [data-lang="ar"]{display:initial}
+    body.ar{direction:rtl}
+    body.ar .nav-links,body.ar .nav-actions,body.ar .hero-grid,body.ar .footer-inner{direction:rtl}
+    body.ar .float-note{right:auto;left:-12px}
+    body.ar .location,body.ar .step,body.ar .visual-label{direction:rtl}
+    body.ar .booking-form,body.ar .booking-status{text-align:right}
+    @media(max-width:980px){
+      .hero-grid{grid-template-columns:1fr;gap:25px}.hero{padding-top:64px}.visual{min-height:390px}.pool-card{max-width:390px}
+      .grid-4{grid-template-columns:repeat(2,1fr)}.locations{grid-template-columns:repeat(2,1fr)}.duo{grid-template-columns:1fr 1fr;gap:22px}
+      .nav-links{gap:16px}
+    }
+    @media(max-width:720px){
+      .wrap{width:min(var(--max),calc(100% - 32px))}nav{height:70px}.menu-btn{display:inline-flex}
+      .nav-links{display:none;position:absolute;top:70px;left:0;right:0;padding:20px 22px 24px;background:rgba(5,14,31,.97);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;gap:18px}
+      .nav-links.open{display:flex}.nav-actions{margin-inline-start:auto}.brand-name{font-size:1.08rem}.brand-logo{width:54px;height:54px}.brand-name{font-size:1.08rem}
+      .hero{padding:55px 0 50px}h1{font-size:clamp(2.65rem,12vw,4.3rem)}.hero-copy{font-size:1rem}.visual{min-height:350px}
+      .pool-card{max-width:340px;border-radius:26px}.float-note{right:0;top:6%}.grid-4{grid-template-columns:1fr 1fr}
+      section{padding:62px 0}.duo{grid-template-columns:1fr}.duo-visual{min-height:300px}.inception-box{grid-template-columns:1fr}.locations{grid-template-columns:1fr 1fr}
+      .trust-row{gap:12px}.card{padding:19px}
+    }
+    @media(max-width:460px){
+      .grid-4,.locations,.duo-cards{grid-template-columns:1fr}.hero-buttons .btn{width:100%}.visual{min-height:315px}
+      .pool-card{max-width:290px}.float-note{right:-3px;padding:11px 13px}.visual-label{left:16px;right:16px;bottom:16px}
+      .nav-actions{gap:6px}.lang{padding:8px 10px}.brand-name{font-size:1rem}.booking-form{grid-template-columns:1fr}.booking-field-wide{grid-column:auto}.booking-form .btn{width:100%}
+    }
+    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important;animation:none!important}.reveal{opacity:1;transform:none}}
+  </style>
+</head>
+<body>
+  <div class="nav-shell">
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#home" aria-label="GoSwim Academy home"><img class="brand-logo" src="goswim-logo.jpeg" alt="GoSwim Academy logo" /></a>
+      <div class="nav-links" id="navLinks">
+        <a href="#method"><span data-lang="en">Method</span><span data-lang="ru">Метод</span><span data-lang="ar">المنهج</span></a>
+        <a href="#inception"><span data-lang="en">Inception program</span><span data-lang="ru">Программа Inception</span><span data-lang="ar">برنامج Inception</span></a>
+        <a href="#locations"><span data-lang="en">Locations</span><span data-lang="ru">Локации</span><span data-lang="ar">المواقع</span></a>
+        <a href="#contact"><span data-lang="en">Contact</span><span data-lang="ru">Контакты</span><span data-lang="ar">التواصل</span></a>
+      </div>
+      <div class="nav-actions">
+        <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
+        <button class="menu-btn" id="menuBtn" type="button" aria-label="Open menu" aria-expanded="false">☰</button>
+      </div>
+    </nav>
+  </div>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="wrap hero-grid">
+        <div class="reveal">
+          <div class="eyebrow"><span data-lang="en">Dubai · Professional sports team</span><span data-lang="ru">Дубай · Команда профессионалов</span><span data-lang="ar">دبي · فريق رياضي محترف</span></div>
+          <h1><span data-lang="en">Neuro swimming <span class="gradient">for kids.</span></span><span data-lang="ru">Нейроплавание <span class="gradient">для детей.</span></span><span data-lang="ar">السباحة العصبية <span class="gradient">للأطفال.</span></span></h1>
+          <p class="hero-copy"><span data-lang="en">A unique duo of swim coach and neuropsychologist. From first splash to confident technique, with thoughtful brain-development exercises woven into every session.</span><span data-lang="ru">Уникальный дуэт тренера по плаванию и нейропсихолога. От первых шагов в воде до уверенной техники — с упражнениями для развития мозга в каждом занятии.</span><span data-lang="ar">ثنائي مميز يجمع بين مدرب سباحة واختصاصي في علم النفس العصبي. من أول لحظة في الماء إلى إتقان السباحة بثقة، مع تمارين مدروسة لتنمية الدماغ في كل جلسة.</span></p>
+          <div class="hero-buttons">
+            <a class="btn btn-primary" href="#contact" data-booking-service="Trial Session"><span data-lang="en">Book a trial class</span><span data-lang="ru">Записаться на пробное</span><span data-lang="ar">احجز درسًا تجريبيًا</span> <span aria-hidden="true">↗</span></a>
+            <a class="btn btn-ghost" href="#method"><span data-lang="en">Explore the method</span><span data-lang="ru">Узнать о методе</span><span data-lang="ar">استكشف المنهج</span></a>
+          </div>
+          <div class="trust-row">
+            <span><b class="check">✓</b><span data-lang="en">Personalized sessions</span><span data-lang="ru">Индивидуальный подход</span><span data-lang="ar">جلسات مخصصة</span></span>
+            <span><b class="check">✓</b><span data-lang="en">Child-first pace</span><span data-lang="ru">Темп ребёнка — в приоритете</span><span data-lang="ar">وتيرة تناسب الطفل</span></span>
+            <span><b class="check">✓</b><span data-lang="en">Dubai locations</span><span data-lang="ru">Локации в Дубае</span><span data-lang="ar">أماكن في دبي</span></span>
+          </div>
+        </div>
+        <div class="visual reveal" aria-label="Decorative swimming illustration">
+          <div class="orb"></div>
+          <div class="pool-card">
+            <img class="hero-photo" src="goswim-team-visual.png" alt="GoSwim Academy — child-centred swimming and development sessions" />
+            <div class="visual-label"><div><strong><span data-lang="en">Confidence starts here</span><span data-lang="ru">Уверенность начинается здесь</span><span data-lang="ar">الثقة تبدأ من هنا</span></strong><small><span data-lang="en">Skills · Coordination · Calm</span><span data-lang="ru">Навыки · Координация · Спокойствие</span><span data-lang="ar">المهارات · التناسق · الهدوء</span></small></div><span class="pill">GO SWIM / DUBAI</span></div>
+          </div>
+          <div class="float-note"><b><span data-lang="en">Mind + Movement</span><span data-lang="ru">Развитие ума и движения</span><span data-lang="ar">العقل والحركة</span></b><span><span data-lang="en">One integrated approach</span><span data-lang="ru">Единый комплексный подход</span><span data-lang="ar">منهج متكامل</span></span></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="method">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span data-lang="en">The GoSwim approach</span><span data-lang="ru">Подход GoSwim</span><span data-lang="ar">منهج GoSwim</span></div>
+          <h2><span data-lang="en">More than swimming lessons.</span><span data-lang="ru">Больше, чем уроки плавания.</span><span data-lang="ar">أكثر من مجرد دروس سباحة.</span></h2>
+          <p class="section-desc"><span data-lang="en">A comprehensive approach that develops swimming skills and supports physical and cognitive development through tailored aquatic training.</span><span data-lang="ru">Комплексный подход, который развивает навыки плавания и поддерживает физическое и когнитивное развитие с помощью индивидуальных занятий в воде.</span><span data-lang="ar">منهج شامل يطور مهارات السباحة ويدعم النمو الجسدي والمعرفي من خلال تدريب مائي مخصص.</span></p>
+        </div>
+        <div class="grid-4">
+          <article class="card reveal"><div class="icon">🏊</div><h3><span data-lang="en">Swimming from A to Z</span><span data-lang="ru">Плавание от А до Я</span><span data-lang="ar">تعلم السباحة من البداية حتى الإتقان</span></h3><p><span data-lang="en">Build core skills and technique step by step, at your child's pace.</span><span data-lang="ru">Осваиваем базовые навыки и технику постепенно, в комфортном для ребёнка темпе.</span><span data-lang="ar">نطوّر المهارات الأساسية والتقنية خطوةً خطوةً، وفقًا لوتيرة طفلك.</span></p></article>
+          <article class="card reveal"><div class="icon">🧠</div><h3><span data-lang="en">Brain exercises</span><span data-lang="ru">Нейроупражнения</span><span data-lang="ar">تمارين الدماغ</span></h3><p><span data-lang="en">Thoughtful activities that bring attention, sequencing and coordination into the session.</span><span data-lang="ru">Упражнения на внимание, последовательность действий и координацию прямо во время занятия.</span><span data-lang="ar">أنشطة مدروسة تدمج الانتباه والتسلسل والتنسيق داخل الجلسة.</span></p></article>
+          <article class="card reveal"><div class="icon">🤸</div><h3><span data-lang="en">Coordination</span><span data-lang="ru">Координация</span><span data-lang="ar">التناسق الحركي</span></h3><p><span data-lang="en">Practise body control, timing and movement awareness in water.</span><span data-lang="ru">Развиваем контроль тела, чувство ритма и осознанность движений в воде.</span><span data-lang="ar">نتدرّب على التحكم بالجسم وضبط التوقيت والوعي بالحركة داخل الماء.</span></p></article>
+          <article class="card reveal"><div class="icon">💙</div><h3><span data-lang="en">Water confidence</span><span data-lang="ru">Уверенность в воде</span><span data-lang="ar">الثقة في الماء</span></h3><p><span data-lang="en">Build comfort and trust gradually, with safety and reassurance at the centre.</span><span data-lang="ru">Постепенно формируем спокойствие и доверие к воде, уделяя главное внимание безопасности.</span><span data-lang="ar">نساعد الطفل على الشعور بالراحة وبناء الثقة تدريجيًا، مع جعل السلامة والطمأنينة أساسًا لكل جلسة.</span></p></article>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="wrap duo">
+        <div class="duo-visual reveal"><img class="duo-photo" src="goswim-profile-poster.png" alt="GoSwim Academy profile poster featuring Kirill Bobrov, founder and creator of the Neuro-Swimming Method" width="1024" height="1536" fetchpriority="high" /></div>
+        <div class="reveal">
+          <div class="eyebrow"><span data-lang="en">The team behind the method</span><span data-lang="ru">Команда специалистов</span><span data-lang="ar">الفريق وراء المنهج</span></div>
+          <h2><span data-lang="en">Coach + neuropsychologist.</span><span data-lang="ru">Тренер + нейропсихолог.</span><span data-lang="ar">مدرب + عالم نفس عصبي.</span></h2>
+          <p class="section-desc"><span data-lang="en">Two specialists work together to make each session purposeful, supportive and adapted to the individual child.</span><span data-lang="ru">Два специалиста работают вместе, чтобы каждое занятие было продуманным, поддерживающим и адаптированным под конкретного ребёнка.</span><span data-lang="ar">يعمل متخصصان معًا لجعل كل جلسة هادفة وداعمة ومناسبة لكل طفل على حدة.</span></p>
+          <div class="duo-cards">
+            <div class="mini-card"><b>🏊 <span data-lang="en">Swim coach</span><span data-lang="ru">Тренер по плаванию</span><span data-lang="ar">مدرب السباحة</span></b><p><span data-lang="en">Guides technique, swimming skills and safe practice.</span><span data-lang="ru">Развивает технику, навыки плавания и безопасное поведение в воде.</span><span data-lang="ar">يرشد التقنية ومهارات السباحة والممارسة الآمنة.</span></p></div>
+            <div class="mini-card"><b>🧠 <span data-lang="en">Neuropsychologist</span><span data-lang="ru">Нейропсихолог</span><span data-lang="ar">عالم نفس عصبي</span></b><p><span data-lang="en">Adapts brain-development activities to the child's needs.</span><span data-lang="ru">Подбирает упражнения с учётом особенностей ребёнка.</span><span data-lang="ar">يعدّل أنشطة تطوير الدماغ وفقًا لاحتياجات الطفل.</span></p></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="inception" id="inception">
+      <div class="wrap">
+        <div class="inception-box reveal">
+          <div>
+            <div class="eyebrow"><span data-lang="en">Inception program</span><span data-lang="ru">Программа Inception</span><span data-lang="ar">برنامج Inception</span></div>
+            <h2><span data-lang="en">A gentler start for water-shy kids.</span><span data-lang="ru">Мягкое знакомство с водой.</span><span data-lang="ar">بداية أهدأ للأطفال الخائفين من الماء.</span></h2>
+            <p><span data-lang="en">For children who feel anxious around water, we focus on gradual familiarisation, trust and small, visible milestones. Every child progresses at their own pace.</span><span data-lang="ru">Для детей, которым тревожно рядом с водой, мы делаем акцент на постепенном знакомстве, доверии и небольших заметных достижениях. Каждый ребёнок движется в своём темпе.</span><span data-lang="ar">للأطفال الذين يشعرون بالقلق من الماء، نركز على تعويدهم عليه تدريجيًا وبناء الثقة وتحقيق إنجازات صغيرة وملموسة. يتقدم كل طفل وفق وتيرته الخاصة.</span></p>
+            <a class="btn btn-primary" href="#contact" data-booking-service="Trial Session"><span data-lang="en">Book a trial session</span><span data-lang="ru">Записаться на пробное занятие</span><span data-lang="ar">احجز جلسة تجريبية</span> ↗</a>
+          </div>
+          <div class="steps">
+            <div class="step"><div class="step-num">01</div><div><b><span data-lang="en">Feel safe</span><span data-lang="ru">Почувствовать безопасность</span><span data-lang="ar">الشعور بالأمان</span></b><span><span data-lang="en">Build trust with the coach and surroundings.</span><span data-lang="ru">Познакомиться с тренером и пространством.</span><span data-lang="ar">ابنِ الثقة مع المدرب والمحيط.</span></span></div></div>
+            <div class="step"><div class="step-num">02</div><div><b><span data-lang="en">Explore water</span><span data-lang="ru">Исследовать воду</span><span data-lang="ar">استكشاف الماء</span></b><span><span data-lang="en">Discover simple movements without pressure.</span><span data-lang="ru">Осваивать простые движения без давления.</span><span data-lang="ar">نتعرّف على حركات بسيطة دون أي ضغط.</span></span></div></div>
+            <div class="step"><div class="step-num">03</div><div><b><span data-lang="en">Grow confidence</span><span data-lang="ru">Развивать уверенность</span><span data-lang="ar">تنمية الثقة</span></b><span><span data-lang="en">Celebrate progress one step at a time.</span><span data-lang="ru">Отмечать прогресс шаг за шагом.</span><span data-lang="ar">نحتفي بكل تقدم، خطوةً بعد خطوة.</span></span></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="locations">
+      <div class="wrap">
+        <div class="section-head reveal">
+          <div class="eyebrow"><span data-lang="en">Find your pool</span><span data-lang="ru">Выберите локацию</span><span data-lang="ar">اختر المسبح</span></div>
+          <h2><span data-lang="en">Training across Dubai.</span><span data-lang="ru">Занятия в разных районах Дубая.</span><span data-lang="ar">تدريب في أنحاء دبي.</span></h2>
+          <p class="section-desc"><span data-lang="en">Sessions are arranged across several areas. Contact us to confirm the most suitable pool, group and availability.</span><span data-lang="ru">Занятия проходят в нескольких районах. Напишите нам, чтобы уточнить подходящий бассейн, группу и доступное время.</span><span data-lang="ar">تتم الجلسات في عدة مناطق. تواصل معنا للتأكد من أقرب مسبح ومجموعة التمرين والتوفر.</span></p>
+        </div>
+        <div class="locations">
+          <div class="location reveal"><div class="loc-number">01</div><div><b><span data-lang="en">Business Bay</span><span data-lang="ru">Бизнес-Бэй</span><span data-lang="ar">الخليج التجاري</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">02</div><div><b><span data-lang="en">JBR</span><span data-lang="ru">JBR</span><span data-lang="ar">جي بي آر</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">03</div><div><b><span data-lang="en">Jumeirah</span><span data-lang="ru">Джумейра</span><span data-lang="ar">جميرا</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">04</div><div><b><span data-lang="en">Downtown Dubai</span><span data-lang="ru">Даунтаун Дубай</span><span data-lang="ar">وسط مدينة دبي</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">05</div><div><b><span data-lang="en">Arabian Ranches 3</span><span data-lang="ru">Арабиан-Ранчес 3</span><span data-lang="ar">المرابع العربية 3</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">06</div><div><b><span data-lang="en">Creek Harbour</span><span data-lang="ru">Крик-Харбор</span><span data-lang="ar">خور دبي هاربور</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">07</div><div><b><span data-lang="en">Dubai Hills</span><span data-lang="ru">Дубай-Хиллс</span><span data-lang="ar">دبي هيلز</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">08</div><div><b><span data-lang="en">Palm Jumeirah</span><span data-lang="ru">Пальма Джумейра</span><span data-lang="ar">نخلة جميرا</span></b><span><span data-lang="en">Pool and availability confirmed on request</span><span data-lang="ru">Бассейн и расписание уточняются по запросу</span><span data-lang="ar">يُحدَّد المسبح والمواعيد عند الاستفسار</span></span></div></div>
+          <div class="location reveal"><div class="loc-number">09</div><div><b><span data-lang="en">Your preferred location</span><span data-lang="ru">Предпочтительный район</span><span data-lang="ar">الموقع المفضل</span></b><span><span data-lang="en">Tell us the area you prefer</span><span data-lang="ru">Укажите желаемый район</span><span data-lang="ar">أخبرنا بالمنطقة التي تفضلها</span></span></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact" id="contact">
+      <div class="wrap">
+        <div class="contact-box reveal">
+          <div class="eyebrow"><span data-lang="en">Your next step</span><span data-lang="ru">Ваш следующий шаг</span><span data-lang="ar">خطوتك التالية</span></div>
+          <h2><span data-lang="en">Book your swimming session.</span><span data-lang="ru">Запишитесь на занятие.</span><span data-lang="ar">احجز جلسة السباحة.</span></h2>
+          <p class="section-desc"><span data-lang="en">Tell us a little about your family and preferred session. We will contact you to confirm availability.</span><span data-lang="ru">Расскажите немного о себе и предпочтительном занятии. Мы свяжемся с вами, чтобы подтвердить доступность.</span><span data-lang="ar">أخبرنا قليلًا عن عائلتك والجلسة المفضلة. سنتواصل معك لتأكيد التوفر.</span></p>
+          <form class="booking-form" id="bookingForm" name="goswim-booking" method="POST" action="/" data-netlify="true" netlify-honeypot="company_website">
+            <input type="hidden" name="form-name" value="goswim-booking" />
+            <input type="hidden" name="subject" data-remove-prefix value="GoSwim Academy booking request - %{submissionId}" />
+            <label class="booking-field"><span><span data-lang="en">Parent / Customer Full Name</span><span data-lang="ru">Имя и фамилия родителя</span><span data-lang="ar">الاسم الكامل لولي الأمر</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="text" name="parent_name" autocomplete="name" pattern=".*\S.*" title="Enter a name with at least one non-space character." required maxlength="120" />
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Email Address</span><span data-lang="ru">Адрес электронной почты</span><span data-lang="ar">البريد الإلكتروني</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="email" name="email" autocomplete="email" required maxlength="254" />
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Phone Number with Country Code</span><span data-lang="ru">Телефон с кодом страны</span><span data-lang="ar">رقم الهاتف مع رمز الدولة</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="tel" name="parent_phone" autocomplete="tel" inputmode="tel" placeholder="+971501234567" pattern="\+[1-9][0-9]{7,14}" aria-describedby="phoneHint" required />
+              <span class="booking-hint" id="phoneHint"><span data-lang="en">Include + and your country code, e.g. +971501234567.</span><span data-lang="ru">Укажите + и код страны, например +971501234567.</span><span data-lang="ar">أدخل + ورمز الدولة، مثل +971501234567.</span></span>
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Child's Name</span><span data-lang="ru">Имя ребёнка</span><span data-lang="ar">اسم الطفل</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="text" name="child_name" pattern=".*\S.*" title="Enter a name with at least one non-space character." required maxlength="120" />
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Child's Age (from 3 months)</span><span data-lang="ru">Возраст ребёнка (от 3 месяцев)</span><span data-lang="ar">عمر الطفل (من 3 أشهر)</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <select name="child_age" required>
+                <option value="" data-label-en="Select age" data-label-ru="Выберите возраст" data-label-ar="اختر العمر"></option>
+                <option value="3 months" data-label-en="3 months" data-label-ru="3 мес." data-label-ar="3 أشهر"></option>
+                <option value="4 months" data-label-en="4 months" data-label-ru="4 мес." data-label-ar="4 أشهر"></option>
+                <option value="5 months" data-label-en="5 months" data-label-ru="5 мес." data-label-ar="5 أشهر"></option>
+                <option value="6 months" data-label-en="6 months" data-label-ru="6 мес." data-label-ar="6 أشهر"></option>
+                <option value="7 months" data-label-en="7 months" data-label-ru="7 мес." data-label-ar="7 أشهر"></option>
+                <option value="8 months" data-label-en="8 months" data-label-ru="8 мес." data-label-ar="8 أشهر"></option>
+                <option value="9 months" data-label-en="9 months" data-label-ru="9 мес." data-label-ar="9 أشهر"></option>
+                <option value="10 months" data-label-en="10 months" data-label-ru="10 мес." data-label-ar="10 أشهر"></option>
+                <option value="11 months" data-label-en="11 months" data-label-ru="11 мес." data-label-ar="11 أشهر"></option>
+                <option value="12 months" data-label-en="12 months" data-label-ru="12 месяцев" data-label-ar="12 شهرًا"></option>
+                <option value="1 year" data-label-en="1 year" data-label-ru="1 год" data-label-ar="1 سنة"></option>
+                <option value="2 years" data-label-en="2 years" data-label-ru="2 года" data-label-ar="سنتان"></option>
+                <option value="3 years" data-label-en="3 years" data-label-ru="3 года" data-label-ar="3 سنوات"></option>
+                <option value="4 years" data-label-en="4 years" data-label-ru="4 года" data-label-ar="4 سنوات"></option>
+                <option value="5 years" data-label-en="5 years" data-label-ru="5 лет" data-label-ar="5 سنوات"></option>
+                <option value="6 years" data-label-en="6 years" data-label-ru="6 лет" data-label-ar="6 سنوات"></option>
+                <option value="7 years" data-label-en="7 years" data-label-ru="7 лет" data-label-ar="7 سنوات"></option>
+                <option value="8 years" data-label-en="8 years" data-label-ru="8 лет" data-label-ar="8 سنوات"></option>
+                <option value="9 years" data-label-en="9 years" data-label-ru="9 лет" data-label-ar="9 سنوات"></option>
+                <option value="10 years" data-label-en="10 years" data-label-ru="10 лет" data-label-ar="10 سنوات"></option>
+                <option value="11 years" data-label-en="11 years" data-label-ru="11 лет" data-label-ar="11 سنة"></option>
+                <option value="12 years" data-label-en="12 years" data-label-ru="12 лет" data-label-ar="12 سنة"></option>
+                <option value="13 years" data-label-en="13 years" data-label-ru="13 лет" data-label-ar="13 سنة"></option>
+                <option value="14 years" data-label-en="14 years" data-label-ru="14 лет" data-label-ar="14 سنة"></option>
+                <option value="15 years" data-label-en="15 years" data-label-ru="15 лет" data-label-ar="15 سنة"></option>
+                <option value="16 years" data-label-en="16 years" data-label-ru="16 лет" data-label-ar="16 سنة"></option>
+                <option value="17 years" data-label-en="17 years" data-label-ru="17 лет" data-label-ar="17 سنة"></option>
+                <option value="18 years" data-label-en="18 years" data-label-ru="18 лет" data-label-ar="18 سنة"></option>
+              </select>
+            </label>
+            <label class="booking-field"><span data-lang="en">Swimming Experience</span><span data-lang="ru">Опыт плавания</span><span data-lang="ar">خبرة السباحة</span>
+              <select name="experience">
+                <option value="" data-label-en="Select experience (optional)" data-label-ru="Выберите уровень (необязательно)" data-label-ar="اختر المستوى (اختياري)"></option>
+                <option value="Beginner" data-label-en="Beginner" data-label-ru="Начальный" data-label-ar="مبتدئ"></option>
+                <option value="Intermediate" data-label-en="Intermediate" data-label-ru="Средний" data-label-ar="متوسط"></option>
+                <option value="Advanced" data-label-en="Advanced" data-label-ru="Продвинутый" data-label-ar="متقدم"></option>
+              </select>
+            </label>
+            <label class="booking-field"><span data-lang="en">Preferred Location</span><span data-lang="ru">Предпочтительный район</span><span data-lang="ar">الموقع المفضل</span>
+              <select name="location" id="preferredLocation">
+                <option value="" data-label-en="Choose a location" data-label-ru="Выберите район" data-label-ar="اختر موقعًا"></option>
+                <option value="Business Bay" data-label-en="Business Bay" data-label-ru="Бизнес-Бэй" data-label-ar="الخليج التجاري"></option>
+                <option value="JBR" data-label-en="JBR" data-label-ru="JBR" data-label-ar="جي بي آر"></option>
+                <option value="Jumeirah" data-label-en="Jumeirah" data-label-ru="Джумейра" data-label-ar="جميرا"></option>
+                <option value="Downtown Dubai" data-label-en="Downtown Dubai" data-label-ru="Даунтаун Дубай" data-label-ar="وسط مدينة دبي"></option>
+                <option value="Arabian Ranches 3" data-label-en="Arabian Ranches 3" data-label-ru="Арабиан-Ранчес 3" data-label-ar="المرابع العربية 3"></option>
+                <option value="Creek Harbour" data-label-en="Creek Harbour" data-label-ru="Крик-Харбор" data-label-ar="خور دبي هاربور"></option>
+                <option value="Dubai Hills" data-label-en="Dubai Hills" data-label-ru="Дубай-Хиллс" data-label-ar="دبي هيلز"></option>
+                <option value="Palm Jumeirah" data-label-en="Palm Jumeirah" data-label-ru="Пальма Джумейра" data-label-ar="نخلة جميرا"></option>
+                <option value="Your preferred location" data-label-en="Your preferred location" data-label-ru="Ваш предпочтительный район" data-label-ar="موقعك المفضل"></option>
+              </select>
+            </label>
+            <label class="booking-field" id="customLocationField" hidden><span data-lang="en">Tell us your preferred location</span><span data-lang="ru">Укажите предпочтительный район</span><span data-lang="ar">حدد موقعك المفضل</span>
+              <input type="text" name="custom_location" maxlength="160" placeholder="Area or community" data-i18n-placeholder="customLocationPlaceholder" />
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Preferred Date</span><span data-lang="ru">Предпочтительная дата</span><span data-lang="ar">التاريخ المفضل</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="date" name="preferred_date" required />
+            </label>
+            <label class="booking-field"><span><span data-lang="en">Preferred Time</span><span data-lang="ru">Предпочтительное время</span><span data-lang="ar">الوقت المفضل</span> <span class="required-mark" aria-hidden="true">*</span></span>
+              <input type="time" name="preferred_time" required />
+            </label>
+            <label class="booking-field"><span data-lang="en">Service</span><span data-lang="ru">Услуга</span><span data-lang="ar">الخدمة</span>
+              <select name="service" required>
+                <option value="Trial Session" selected data-label-en="Trial Session" data-label-ru="Пробное занятие" data-label-ar="جلسة تجريبية"></option>
+                <option value="" data-label-en="Select a service" data-label-ru="Выберите услугу" data-label-ar="اختر الخدمة"></option>
+                <option value="Trial Session" data-label-en="Trial Session" data-label-ru="Пробное занятие" data-label-ar="جلسة تجريبية"></option>
+              </select>
+            </label>
+            <label class="booking-field booking-field-wide"><span data-lang="en">Additional Message (optional)</span><span data-lang="ru">Дополнительное сообщение (необязательно)</span><span data-lang="ar">رسالة إضافية (اختياري)</span>
+              <textarea name="additional_message" rows="4" maxlength="2000"></textarea>
+            </label>
+            <label class="booking-honeypot" aria-hidden="true" tabindex="-1"><span data-lang="en">Leave this field empty</span><span data-lang="ru">Оставьте это поле пустым</span><span data-lang="ar">اترك هذا الحقل فارغًا</span><input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+            <button class="btn btn-primary" type="submit"><span data-lang="en">Send Booking Request</span><span data-lang="ru">Отправить заявку</span><span data-lang="ar">إرسال طلب الحجز</span> <span aria-hidden="true">↗</span></button>
+          </form>
+          <p class="booking-note" id="bookingNote"><span data-lang="en">Submit your request using the form below. Our team will contact you to confirm your session.</span><span data-lang="ru">Отправьте заявку через форму ниже. Наша команда свяжется с вами, чтобы подтвердить занятие.</span><span data-lang="ar">أرسل طلبك عبر النموذج أدناه. سيتواصل معك فريقنا لتأكيد موعد الجلسة.</span></p>
+          <p class="booking-status" id="bookingStatus" role="status" aria-live="polite" tabindex="-1" hidden></p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wrap footer-inner">
+      <a class="brand" href="#home" aria-label="GoSwim Academy home"><img class="brand-logo" src="goswim-logo.jpeg" alt="GoSwim Academy logo" /></a>
+      <span>© <span id="year"></span> GoSwim Academy · <span data-lang="en">Dubai, UAE</span><span data-lang="ru">Дубай, ОАЭ</span><span data-lang="ar">دبي، الإمارات العربية المتحدة</span></span>
+      <div class="footer-links"><a href="#method"><span data-lang="en">Method</span><span data-lang="ru">Метод</span><span data-lang="ar">المنهج</span></a><a href="#contact"><span data-lang="en">Contact</span><span data-lang="ru">Контакты</span><span data-lang="ar">التواصل</span></a></div>
+    </div>
+  </footer>
+  <script>
+    const languages = ['en', 'ru', 'ar'];
+    const translations = {
+      en: {
+        pageTitle: 'GoSwim Academy — Trial Swimming Sessions in Dubai',
+        pageDescription: 'GoSwim Academy — neuro swimming for kids in Dubai. Trial swimming sessions for children from 3 months in Dubai.',
+        navLabel: 'Main navigation',
+        homeLabel: 'GoSwim Academy home',
+        menuOpen: 'Open menu',
+        menuClose: 'Close menu',
+        languageLabel: 'Switch language',
+        heroVisualLabel: 'GoSwim Academy swimming and development sessions',
+        heroImageAlt: 'GoSwim Academy — child-centred swimming and development sessions',
+        teamImageAlt: 'GoSwim Academy profile poster featuring Kirill Bobrov, founder and creator of the Neuro-Swimming Method',
+        customLocationPlaceholder: 'Area or community',
+        required: 'Please fill out this field.',
+        invalidName: 'Enter a name with at least one non-space character.',
+        invalidEmail: 'Enter a valid email address.',
+        invalidPhone: 'Enter a phone number with country code, for example +971501234567.',
+        offline: 'Online booking is available on the published website only. Your details remain in the form. Please email swimgo.academy@gmail.com if you need help.',
+        loading: 'Sending your booking request…',
+        success: 'Your request was received by our booking system. Our team will contact you to confirm your session.',
+        error: 'We could not submit your request. Your details are still in the form. Please try again or email swimgo.academy@gmail.com.',
+        spam: 'We could not verify this request. Please contact swimgo.academy@gmail.com to arrange a session.'
+      },
+      ru: {
+        pageTitle: 'GoSwim Academy — пробные занятия по плаванию в Дубае',
+        pageDescription: 'GoSwim Academy — нейроплавание для детей в Дубае. Пробные занятия для детей от трёх месяцев.',
+        navLabel: 'Главная навигация',
+        homeLabel: 'Главная страница GoSwim Academy',
+        menuOpen: 'Открыть меню',
+        menuClose: 'Закрыть меню',
+        languageLabel: 'Сменить язык',
+        heroVisualLabel: 'Занятия по плаванию и развитию GoSwim Academy',
+        heroImageAlt: 'Занятия по плаванию и развитию GoSwim Academy с индивидуальным подходом к детям',
+        teamImageAlt: 'Профильный постер GoSwim Academy с Кириллом Бобровым, основателем и создателем метода нейроплавания',
+        customLocationPlaceholder: 'Район или жилой комплекс',
+        required: 'Заполните это поле.',
+        invalidName: 'Введите имя, содержащее хотя бы один символ, кроме пробела.',
+        invalidEmail: 'Введите корректный адрес электронной почты.',
+        invalidPhone: 'Введите номер телефона с кодом страны, например +971501234567.',
+        offline: 'Онлайн-запись работает только на опубликованном сайте. Ваши данные остались в форме. Если нужна помощь, напишите на swimgo.academy@gmail.com.',
+        loading: 'Отправляем вашу заявку…',
+        success: 'Заявка получена системой записи. Наша команда свяжется с вами, чтобы подтвердить занятие.',
+        error: 'Не удалось отправить заявку. Ваши данные остались в форме. Попробуйте ещё раз или напишите на swimgo.academy@gmail.com.',
+        spam: 'Не удалось проверить заявку. Чтобы записаться, напишите на swimgo.academy@gmail.com.'
+      },
+      ar: {
+        pageTitle: 'GoSwim Academy — جلسات سباحة تجريبية في دبي',
+        pageDescription: 'GoSwim Academy — السباحة العصبية للأطفال في دبي. جلسات تجريبية للأطفال من عمر ثلاثة أشهر.',
+        navLabel: 'التنقل الرئيسي',
+        homeLabel: 'الصفحة الرئيسية لأكاديمية GoSwim',
+        menuOpen: 'افتح القائمة',
+        menuClose: 'أغلق القائمة',
+        languageLabel: 'تغيير اللغة',
+        heroVisualLabel: 'جلسات السباحة والتطوير من GoSwim Academy',
+        heroImageAlt: 'جلسات سباحة وتطوير للأطفال مع GoSwim Academy',
+        teamImageAlt: 'ملصق تعريفي لـ GoSwim Academy يضم كيريل بوبروف، المؤسس ومبتكر منهج السباحة العصبية',
+        customLocationPlaceholder: 'المنطقة أو المجمع السكني',
+        required: 'يرجى تعبئة هذا الحقل.',
+        invalidName: 'يرجى إدخال اسم يحتوي على حرف واحد على الأقل.',
+        invalidEmail: 'يرجى إدخال بريد إلكتروني صحيح.',
+        invalidPhone: 'أدخل رقم الهاتف مع رمز الدولة، مثل +971501234567.',
+        offline: 'الحجز عبر الإنترنت متاح على الموقع المنشور فقط. ما زالت بياناتك في النموذج. للمساعدة، راسل swimgo.academy@gmail.com.',
+        loading: 'جارٍ إرسال طلب الحجز…',
+        success: 'تم استلام طلبك في نظام الحجز. سيتواصل معك فريقنا لتأكيد موعد الجلسة.',
+        error: 'تعذر إرسال طلبك. ما زالت بياناتك في النموذج. يرجى المحاولة مجددًا أو مراسلة swimgo.academy@gmail.com.',
+        spam: 'تعذر التحقق من هذا الطلب. يرجى مراسلة swimgo.academy@gmail.com لترتيب جلسة.'
+      }
+    };
+    const body = document.body;
+    const langToggle = document.getElementById('langToggle');
+    const menuBtn = document.getElementById('menuBtn');
+    const navLinks = document.getElementById('navLinks');
+    const bookingForm = document.getElementById('bookingForm');
+    const preferredLocation = document.getElementById('preferredLocation');
+    const customLocationField = document.getElementById('customLocationField');
+    const bookingStatus = document.getElementById('bookingStatus');
+    const submitButton = bookingForm.querySelector('button[type="submit"]');
+    const nav = document.querySelector('nav');
+    const homeLinks = document.querySelectorAll('.brand');
+    const languageMeta = document.querySelector('meta[name="description"]');
+    let savedLanguage = null;
+    try {
+      savedLanguage = localStorage.getItem('goswim-language');
+    } catch (error) {
+      console.warn('The saved language preference could not be read:', error);
+    }
+    let currentLanguage = languages.includes(savedLanguage) ? savedLanguage : 'en';
+    let bookingInProgress = false;
+    let translationIndex = 0;
+
+    document.querySelectorAll('[data-lang="en"]').forEach(english => {
+      const parent = english.parentElement;
+      const localizedSiblings = [...parent.children].filter(element => element.hasAttribute('data-lang'));
+      const start = localizedSiblings.indexOf(english);
+      const group = localizedSiblings.slice(start, start + languages.length);
+      if (group.length !== languages.length || group.some((element, index) => element.dataset.lang !== languages[index])) {
+        throw new Error(`Incomplete translation group near: ${english.textContent.trim()}`);
+      }
+
+      const key = `content${++translationIndex}`;
+      group.forEach(element => {
+        translations[element.dataset.lang][key] = element.innerHTML;
+      });
+      const translatedElement = document.createElement('span');
+      translatedElement.dataset.i18n = key;
+      parent.insertBefore(translatedElement, english);
+      group.forEach(element => element.remove());
+    });
+
+    bookingForm.querySelectorAll('option[data-label-en]').forEach((option, index) => {
+      const key = `bookingOption${index}`;
+      languages.forEach(language => {
+        const label = option.dataset[`label${language[0].toUpperCase()}${language.slice(1)}`];
+        if (typeof label !== 'string') throw new Error(`Missing ${language} booking option translation: ${key}`);
+        translations[language][key] = label;
+      });
+      option.dataset.i18n = key;
+      languages.forEach(language => delete option.dataset[`label${language[0].toUpperCase()}${language.slice(1)}`]);
+    });
+
+    const textByKey = (language, key) => {
+      const text = translations[language][key];
+      if (typeof text !== 'string') throw new Error(`Missing ${language} translation: ${key}`);
+      return text;
+    };
+    const getValidationMessage = field => {
+      if (field.validity.valueMissing) return textByKey(currentLanguage, 'required');
+      if (field.validity.typeMismatch && field.type === 'email') return textByKey(currentLanguage, 'invalidEmail');
+      if (field.validity.patternMismatch && field.type === 'tel') return textByKey(currentLanguage, 'invalidPhone');
+      if (field.validity.patternMismatch) return textByKey(currentLanguage, 'invalidName');
+      return '';
+    };
+    const updateValidationMessages = () => {
+      bookingForm.querySelectorAll('input, select, textarea').forEach(field => {
+        field.setCustomValidity('');
+        if (!field.validity.valid) field.setCustomValidity(getValidationMessage(field));
+      });
+    };
+
+    function setLanguage(language) {
+      if (!languages.includes(language)) throw new Error(`Unsupported language: ${language}`);
+      currentLanguage = language;
+      body.classList.remove('ru', 'ar');
+      if (language !== 'en') body.classList.add(language);
+      document.documentElement.lang = language;
+      document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+      body.dir = language === 'ar' ? 'rtl' : 'ltr';
+      document.title = textByKey(language, 'pageTitle');
+      languageMeta.content = textByKey(language, 'pageDescription');
+      document.querySelector('nav').setAttribute('aria-label', textByKey(language, 'navLabel'));
+      homeLinks.forEach(link => link.setAttribute('aria-label', textByKey(language, 'homeLabel')));
+      document.querySelector('.visual').setAttribute('aria-label', textByKey(language, 'heroVisualLabel'));
+      document.querySelector('.hero-photo').alt = textByKey(language, 'heroImageAlt');
+      document.querySelector('.duo-photo').alt = textByKey(language, 'teamImageAlt');
+      document.querySelector('[name="custom_location"]').placeholder = textByKey(language, 'customLocationPlaceholder');
+      document.querySelectorAll('[data-i18n]').forEach(element => {
+        element.innerHTML = textByKey(language, element.dataset.i18n);
+      });
+      langToggle.textContent = language.toUpperCase();
+      langToggle.setAttribute('aria-label', `${textByKey(language, 'languageLabel')}: ${language.toUpperCase()}`);
+      menuBtn.setAttribute('aria-label', textByKey(language, navLinks.classList.contains('open') ? 'menuClose' : 'menuOpen'));
+      bookingForm.elements.parent_name.title = textByKey(language, 'invalidName');
+      bookingForm.elements.child_name.title = textByKey(language, 'invalidName');
+      updateValidationMessages();
+      if (bookingStatus.dataset.messageKey) {
+        bookingStatus.textContent = textByKey(language, bookingStatus.dataset.messageKey);
+      }
+      try {
+        localStorage.setItem('goswim-language', language);
+      } catch (error) {
+        console.warn('The language preference could not be saved:', error);
+      }
+    }
+
+    function showBookingStatus(state, messageKey) {
+      bookingStatus.dataset.state = state;
+      bookingStatus.dataset.messageKey = messageKey;
+      bookingStatus.textContent = textByKey(currentLanguage, messageKey);
+      bookingStatus.hidden = false;
+      bookingStatus.focus();
+    }
+
+    preferredLocation.addEventListener('change', () => {
+      const custom = preferredLocation.value === 'Your preferred location';
+      customLocationField.hidden = !custom;
+      bookingForm.elements.custom_location.required = custom;
+      if (!custom) bookingForm.elements.custom_location.value = '';
+    });
+    bookingForm.addEventListener('invalid', event => {
+      event.target.setCustomValidity(getValidationMessage(event.target));
+    }, true);
+    bookingForm.addEventListener('input', event => {
+      if (event.target instanceof HTMLElement && 'setCustomValidity' in event.target) {
+        event.target.setCustomValidity('');
+      }
+    });
+    langToggle.addEventListener('click', () => {
+      const nextLanguage = languages[(languages.indexOf(currentLanguage) + 1) % languages.length];
+      setLanguage(nextLanguage);
+    });
+    menuBtn.addEventListener('click', () => {
+      const open = navLinks.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', String(open));
+      menuBtn.setAttribute('aria-label', textByKey(currentLanguage, open ? 'menuClose' : 'menuOpen'));
+      menuBtn.textContent = open ? '✕' : '☰';
+    });
+    navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.setAttribute('aria-expanded', 'false');
+      menuBtn.setAttribute('aria-label', textByKey(currentLanguage, 'menuOpen'));
+      menuBtn.textContent = '☰';
+    }));
+    document.getElementById('year').textContent = new Date().getFullYear();
+    const bookingDate = bookingForm.elements.preferred_date;
+    const today = new Date();
+    today.setMinutes(today.getMinutes() - today.getTimezoneOffset());
+    bookingDate.min = today.toISOString().split('T')[0];
+    document.querySelectorAll('[data-booking-service]').forEach(link => {
+      link.addEventListener('click', () => {
+        bookingForm.elements.service.value = link.dataset.bookingService;
+      });
+    });
+    bookingForm.addEventListener('submit', async event => {
+      event.preventDefault();
+      updateValidationMessages();
+      if (bookingInProgress || !bookingForm.reportValidity()) return;
+
+      if (String(new FormData(bookingForm).get('company_website') || '').trim()) {
+        showBookingStatus('error', 'spam');
+        return;
+      }
+      if (window.location.protocol !== 'https:') {
+        showBookingStatus('error', 'offline');
+        return;
+      }
+
+      bookingInProgress = true;
+      submitButton.disabled = true;
+      submitButton.setAttribute('aria-busy', 'true');
+      showBookingStatus('loading', 'loading');
+      try {
+        const body = new URLSearchParams();
+        new FormData(bookingForm).forEach((value, key) => {
+          if (typeof value === 'string') body.append(key, value);
+        });
+        const response = await fetch(bookingForm.action, {
+          method: 'POST',
+          headers: {'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'},
+          body: body.toString()
+        });
+        if (!response.ok) throw new Error(`Netlify Forms responded with status ${response.status}`);
+
+        showBookingStatus('success', 'success');
+        bookingForm.reset();
+        customLocationField.hidden = true;
+        bookingForm.elements.custom_location.required = false;
+        setLanguage(currentLanguage);
+      } catch (error) {
+        console.error('Booking request submission failed:', error);
+        showBookingStatus('error', 'error');
+      } finally {
+        bookingInProgress = false;
+        submitButton.disabled = false;
+        submitButton.removeAttribute('aria-busy');
+      }
+    });
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, {threshold: .12});
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    setLanguage(currentLanguage);
+  </script>
+</body>
+</html>
